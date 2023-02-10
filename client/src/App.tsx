@@ -1,7 +1,9 @@
+import CommentsBox from './components/CommentsBox'
+
 function App() {
   return (
-    <div>
-      <h1 className='text-green-500'>React with TypeScript</h1>
+    <div className='flex justify-center items-center h-screen'>
+      <CommentsBox />
     </div>
   )
 }
