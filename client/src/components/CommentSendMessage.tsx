@@ -9,7 +9,7 @@ const CommentSendMessage = () => {
       <input
         type='text'
         placeholder='Type a comment...'
-        className='w-full h-full p-4 outline-none'
+        className='w-full h-full p-5 outline-none'
       />
       <button className='w-20 bg-cyan-300 shadow-cyan-200 shadow-lg flex justify-center items-center'>
         <FiArrowRight className='w-6 h-6' />
