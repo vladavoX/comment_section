@@ -21,21 +21,11 @@ const Root = () => {
     },
     {
       path: '/login',
-      element: (
-        <LoginRegisterPage
-          user={user}
-          setUser={setUser}
-        />
-      ),
+      element: <LoginRegisterPage setUser={setUser} />,
     },
     {
       path: '/register',
-      element: (
-        <LoginRegisterPage
-          user={user}
-          setUser={setUser}
-        />
-      ),
+      element: <LoginRegisterPage setUser={setUser} />,
     },
   ])
 
