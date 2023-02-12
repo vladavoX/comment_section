@@ -1,6 +1,11 @@
 import CommentsBox from './components/CommentsBox'
 
-function App() {
+interface Props {
+  user: any
+  setUser: React.Dispatch<React.SetStateAction<any>>
+}
+
+const App = ({ user, setUser }: Props) => {
   return (
     <div className='flex justify-center items-center h-screen'>
       <CommentsBox />

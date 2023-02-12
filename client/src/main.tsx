@@ -1,28 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import App from './App'
-import './index.css'
 import LoginRegisterPage from './LoginRegisterPage'
+import './index.css'
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-  },
-  {
-    path: '/login',
-    element: <LoginRegisterPage />,
-  },
-  {
-    path: '/register',
-    element: <LoginRegisterPage />,
-  },
-])
+const Root = () => {
+  const [user, setUser] = useState(null)
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: (
+        <App
+          user={user}
+          setUser={setUser}
+        />
+      ),
+    },
+    {
+      path: '/login',
+      element: (
+        <LoginRegisterPage
+          user={user}
+          setUser={setUser}
+        />
+      ),
+    },
+    {
+      path: '/register',
+      element: (
+        <LoginRegisterPage
+          user={user}
+          setUser={setUser}
+        />
+      ),
+    },
+  ])
+
+  return (
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  )
+}
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <Root />
 )
