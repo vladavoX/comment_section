@@ -69,7 +69,10 @@ const LoginRegisterPage = ({ setUser }: Props) => {
           onChange={handleChange}
           required
         />
-        <button className='w-full p-4 rounded-md font-semibold bg-gradient-to-br from-cyan-100 to-cyan-200 shadow-cyan-200'>
+        <button
+          type='submit'
+          className='w-full p-4 rounded-md font-semibold bg-gradient-to-br from-cyan-100 to-cyan-200 shadow-cyan-200'
+        >
           {isLogin ? 'Login' : 'Register'}
         </button>
       </form>

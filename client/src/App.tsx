@@ -1,4 +1,5 @@
 import CommentsBox from './components/CommentsBox'
+import WarrningMessage from './components/WarrningMessage'
 
 interface Props {
   user: any
@@ -8,7 +9,7 @@ interface Props {
 const App = ({ user, setUser }: Props) => {
   return (
     <div className='flex justify-center items-center h-screen'>
-      <CommentsBox />
+      {user ? <CommentsBox /> : <WarrningMessage />}
     </div>
   )
 }
