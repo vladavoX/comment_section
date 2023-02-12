@@ -7,7 +7,11 @@ import LoginRegisterPage from './LoginRegisterPage'
 import './index.css'
 
 const Root = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({
+    name: '',
+    username: '',
+    password: '',
+  })
 
   const router = createBrowserRouter([
     {
@@ -29,13 +33,11 @@ const Root = () => {
     },
   ])
 
-  return (
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  )
+  return <RouterProvider router={router} />
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <Root />
+  <React.StrictMode>
+    <Root />
+  </React.StrictMode>
 )

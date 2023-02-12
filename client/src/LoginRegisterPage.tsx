@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 interface Props {
   setUser: React.Dispatch<React.SetStateAction<any>>
@@ -13,6 +13,7 @@ const LoginRegisterPage = ({ setUser }: Props) => {
     password: '',
   })
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (location.pathname === '/login') {
@@ -28,7 +29,8 @@ const LoginRegisterPage = ({ setUser }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(values)
+    setUser(values)
+    navigate('/')
   }
 
   return (
