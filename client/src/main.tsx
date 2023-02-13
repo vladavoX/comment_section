@@ -7,11 +7,7 @@ import LoginRegisterPage from './LoginRegisterPage'
 import './index.css'
 
 const Root = () => {
-  const [user, setUser] = useState({
-    name: '',
-    username: '',
-    password: '',
-  })
+  const [user, setUser] = useState(null)
 
   const router = createBrowserRouter([
     {

@@ -29,6 +29,18 @@ const LoginRegisterPage = ({ setUser }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    await fetch(
+      isLogin
+        ? 'http://localhost:3000/api/login'
+        : 'http://localhost:3000/api/register',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      }
+    )
     setUser(values)
     navigate('/')
   }
