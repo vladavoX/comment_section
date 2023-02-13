@@ -29,20 +29,50 @@ const LoginRegisterPage = ({ setUser }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    await fetch(
-      isLogin
-        ? 'http://localhost:3000/api/login'
-        : 'http://localhost:3000/api/register',
-      {
+    if (isLogin) {
+      const res = await fetch('http://localhost:3000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(values),
+      })
+      const data = await res.json()
+      if (data.data) {
+        setUser(data.data.user)
+        navigate('/')
+        return
       }
-    )
-    setUser(values)
-    navigate('/')
+    }
+
+    try {
+      const res = await fetch('http://localhost:3000/api/users', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const data = await res.json()
+      const user = data.data.users.find(
+        (user: any) => user.username === values.username
+      )
+      if (user) return alert('User already exists')
+      const res2 = await fetch('http://localhost:3000/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+      const data2 = await res2.json()
+      if (data2.data) {
+        setIsLogin(true)
+        navigate('/login')
+        return
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
